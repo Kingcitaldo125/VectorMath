@@ -303,6 +303,23 @@ def pairwise(self,v,w):
         product1 = v*w
         return VectorN((product1))
 
+def projection(v, w):
+    """ Return a new VectorN of the projection of v onto w -- must pass two vectorNs of the same dimension"""
+    if isinstance(v, VectorN) and isinstance(w, VectorN) and v.mDim == w.mDim:
+        dP = dot(v,w)
+        wMag = w.magnitude()
+        sclr = dP / (wMag**2)
+        prod = sclr * w
+        return VectorN(prod)
+    else:
+        raise TypeError("You must pass two VectorN's of the same dimension to the function")
+
+def angleBetweenVectors(v, w):
+    """ Return the angle, theta, between two VectorN's of the same dimension in degrees"""
+    if isinstance(v, VectorN) and isinstance(w, VectorN) and v.mDim == w.mDim:
+        return math.degrees(math.acos(dot(v,w)/(v.magnitude()*w.magnitude())))
+    else:
+        raise TypeError("You must pass two VectorN's of the same dimension to the function")
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 #@ (internal) TEST PROGRAMS           @
