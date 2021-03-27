@@ -7,6 +7,7 @@ iMatx = [[1,0,0],[0,1,0],[0,0,1]]
 
 
 def add(vec3one, vec3two):
+	'''Return the sum of vec3one and vec3two'''
 	if len(vec3one) != len(vec3two):
 		return -1
 	a = vec3one
@@ -15,6 +16,7 @@ def add(vec3one, vec3two):
 	return [round(a[i] + b[i],4) for i in range(len(a))]
 
 def sub(vec3one, vec3two):
+	'''Return the difference between vec3one and vec3two(vec3one - vec3two)'''
 	if len(vec3one) != len(vec3two):
 		return -1
 	a = vec3one
@@ -23,9 +25,11 @@ def sub(vec3one, vec3two):
 	return [round(a[i] - b[i],4) for i in range(len(a))]
 
 def scale(vec3, val):
+	'''Scale the vector, vec3, by the value val'''
 	return [i*val for i in vec3]
 
 def magnitude(vec3):
+	'''Return the magnitude of a vector'''
 	tot = 0
 	for v in vec3:
 		tot += v**2
@@ -33,9 +37,11 @@ def magnitude(vec3):
 	return round(math.sqrt(tot),4)
 
 def normalize(vec3):
+	'''Normalize, and return, a vector'''
 	return [round(i/magnitude(vec3),4) for i in vec3]
 
 def dot(vec3one, vec3two):
+	'''Return the dot product of two vectors'''
 	if len(vec3one) != len(vec3two):
 		return -1
 	h = 0
@@ -46,6 +52,7 @@ def dot(vec3one, vec3two):
 	return round(h,4)
 
 def cross(vec3one, vec3two):
+	'''Return the cross product of two vector 3s'''
 	if len(vec3one) != len(vec3two) or len(vec3one) != 3:
 		return -1
 	a = vec3one
@@ -62,6 +69,7 @@ def cross(vec3one, vec3two):
 	return [round((ay*bz) - (az*by), 4), round((az*bx) - (ax*bz),4), round((ax*by) - (ay*bx),4)]
 
 def get_angle(vec3one, vec3two):
+	'''Return the angle(degrees) between two vectors'''
 	dotV = dot(vec3one, vec3two)
 	magone = magnitude(vec3one)
 	magtwo = magnitude(vec3two)
@@ -77,6 +85,7 @@ def get_angle(vec3one, vec3two):
 	return round(math.degrees(theta),4)
 
 if __name__ == "__main__":
+	'''Entrypoint'''
 	vec3one = [4.5774, 7.5774, 2.5774]
 	vec3two = [1.12321, 3.12184, 8.49534]
 
