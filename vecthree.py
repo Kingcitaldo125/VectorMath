@@ -1,12 +1,18 @@
 import math
 
+
+# Constants
+pi=math.pi
+iMatx = [[1,0,0],[0,1,0],[0,0,1]]
+
+
 def add(vec3one, vec3two):
 	if len(vec3one) != len(vec3two):
 		return -1
 	a = vec3one
 	b = vec3two
 
-	return [(a[i] + b[i]) for i in range(len(a))]
+	return [round(a[i] + b[i],4) for i in range(len(a))]
 
 def sub(vec3one, vec3two):
 	if len(vec3one) != len(vec3two):
@@ -14,7 +20,7 @@ def sub(vec3one, vec3two):
 	a = vec3one
 	b = vec3two
 
-	return [(a[i] - b[i]) for i in range(len(a))]
+	return [round(a[i] - b[i],4) for i in range(len(a))]
 
 def scale(vec3, val):
 	return [i*val for i in vec3]
@@ -53,35 +59,33 @@ def cross(vec3one, vec3two):
 	by = b[1]
 	bz = b[2]
 
-	holdr = [round((ay*bz) - (az*by), 4), round((az*bx) - (ax*bz),4), round((ax*by) - (ay*bx),4)]
-	
-	return holdr
+	return [round((ay*bz) - (az*by), 4), round((az*bx) - (ax*bz),4), round((ax*by) - (ay*bx),4)]
 
 def get_angle(vec3one, vec3two):
 	dotV = dot(vec3one, vec3two)
 	magone = magnitude(vec3one)
 	magtwo = magnitude(vec3two)
-	theta = math.acos(dotV/(magone * magtwo))
+	ang = dotV/(magone * magtwo)
+	ang=round(ang,4)
+	theta = math.acos(ang)
 	
 	NDot = round(magone * magtwo * math.cos(theta))
-	assert(NDot == dotV)
+	print("NDot",NDot)
+	print("dotV",dotV)
+	assert(round(NDot) == round(dotV))
 
 	return round(math.degrees(theta),4)
 
-vec3one = [5, 4, 3]
-vec3two = [3, -2, 7]
-vec3three = [8, 4, 9]
+if __name__ == "__main__":
+	vec3one = [4.5774, 7.5774, 2.5774]
+	vec3two = [1.12321, 3.12184, 8.49534]
 
-#vec3one = [1,0,0]
-#vec3two = [0,1,0]
-#vec3three = [0,0,1]
-
-print(f"{vec3one} magnitude =", magnitude(vec3one))
-print(f"{vec3two} magnitude =", magnitude(vec3two))
-print(f"'{vec3one}' + '{vec3two}' =", add(vec3one, vec3two))
-print(f"'{vec3one}' - '{vec3two}' =", sub(vec3one, vec3two))
-print(f"{vec3one} normalized =", normalize(vec3one))
-print(f"{vec3one} normalized =", normalize(vec3two))
-print(f"'{vec3one}' dot '{vec3two}' =", dot(vec3one, vec3two))
-print(f"'{vec3one}' X '{vec3two}' =", cross(vec3one, vec3two))
-print(f"Angle between '{vec3one}' and '{vec3two}' (degrees)=", get_angle(vec3one, vec3two))
+	print(f"{vec3one} magnitude =", magnitude(vec3one))
+	print(f"{vec3two} magnitude =", magnitude(vec3two))
+	print(f"'{vec3one}' + '{vec3two}' =", add(vec3one, vec3two))
+	print(f"'{vec3one}' - '{vec3two}' =", sub(vec3one, vec3two))
+	print(f"{vec3one} normalized =", normalize(vec3one))
+	print(f"{vec3two} normalized =", normalize(vec3two))
+	print(f"'{vec3one}' dot '{vec3two}' =", dot(vec3one, vec3two))
+	print(f"'{vec3one}' X '{vec3two}' =", cross(vec3one, vec3two))
+	print(f"Angle between '{vec3one}' and '{vec3two}' (degrees)=", get_angle(vec3one, vec3two))
