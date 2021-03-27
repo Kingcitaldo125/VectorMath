@@ -102,7 +102,7 @@ def main():
 			print("")
 		elif c_int == 5: # normalize
 			x = str(process(5,1))
-			result = ",".join("".join(str(x)[1:-1]).split(","))
+			result = ",".join("".join(str(x)[1:-1]).split(", "))
 			print("")
 			print(result)
 			print("")
@@ -113,7 +113,7 @@ def main():
 			print("")
 		elif c_int == 7: # cross product
 			x = str(process(7,2))
-			result = ",".join("".join(str(x)[1:-1]).split(","))
+			result = ",".join("".join(str(x)[1:-1]).split(", "))
 			print("")
 			print(result)
 			print("")
