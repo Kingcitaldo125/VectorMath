@@ -1,11 +1,5 @@
 import math
 
-
-# Constants
-pi=math.pi
-iMatx = [[1,0,0],[0,1,0],[0,0,1]]
-
-
 def add(vec3one, vec3two):
 	'''Return the sum of vec3one and vec3two'''
 	if len(vec3one) != len(vec3two):
@@ -66,7 +60,7 @@ def cross(vec3one, vec3two):
 	by = b[1]
 	bz = b[2]
 
-	return [round((ay*bz) - (az*by), 4), round((az*bx) - (ax*bz),4), round((ax*by) - (ay*bx),4)]
+	return [round((ay*bz) - (az*by), 4), round((az*bx) - (ax*bz), 4), round((ax*by) - (ay*bx), 4)]
 
 def get_angle(vec3one, vec3two):
 	'''Return the angle(degrees) between two vectors'''
@@ -74,7 +68,7 @@ def get_angle(vec3one, vec3two):
 	magone = magnitude(vec3one)
 	magtwo = magnitude(vec3two)
 	ang = dotV/(magone * magtwo)
-	ang=round(ang,4)
+	ang = round(ang, 4)
 	theta = math.acos(ang)
 	
 	NDot = round(magone * magtwo * math.cos(theta))
@@ -82,7 +76,7 @@ def get_angle(vec3one, vec3two):
 	print("dotV",dotV)
 	assert(round(NDot) == round(dotV))
 
-	return round(math.degrees(theta),4)
+	return round(math.degrees(theta), 4)
 
 if __name__ == "__main__":
 	'''Entrypoint'''

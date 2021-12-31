@@ -40,6 +40,8 @@ def print_options(n):
 
 def get_vector_input(n):
 	nmap = {1:"First", 2:"Second"}
+	if n == 0:
+		return [input("Enter the vector\n")]
 	return [input(f"Enter the {nmap[i]} vector\n") for i in range(1, n+1)]
 
 
@@ -96,12 +98,12 @@ def main():
 			print(result)
 			print("")
 		elif c_int == 4: # get magnitude
-			x = str(process(4,1))
+			x = str(process(4,0))
 			print("")
 			print(x)
 			print("")
 		elif c_int == 5: # normalize
-			x = str(process(5,1))
+			x = str(process(5,0))
 			result = ",".join("".join(str(x)[1:-1]).split(", "))
 			print("")
 			print(result)
