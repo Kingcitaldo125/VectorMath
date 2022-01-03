@@ -10,9 +10,8 @@ menu_options = [
 "5. Normalize",
 "6. Dot Product",
 "7. Cross Product",
-"8. Get Angle",
-"9. Copy last result to clipboard",
-"10. Quit"
+"8. Get Angle (in degrees)",
+"9. Quit"
 ]
 
 
@@ -124,13 +123,7 @@ def main():
 			print("")
 			print(x)
 			print("")
-		elif c_int == 9: # copy result
-			if result == None:
-				os.system('echo "" | clip')
-			else:
-				cmd = f"echo {result} | clip"
-				os.system(cmd)
-		elif c_int == 10: # stop
+		elif c_int == 9: # stop
 			done = True
 		else:
 			raise Exception(f"Cannot recognize command'{c}'")
