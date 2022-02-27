@@ -72,8 +72,6 @@ def get_angle(vec3one, vec3two):
 	theta = math.acos(ang)
 	
 	NDot = round(magone * magtwo * math.cos(theta))
-	#print("NDot",NDot)
-	#print("dotV",dotV)
 	assert(round(NDot) == round(dotV))
 
 	return round(math.degrees(theta), 4)
