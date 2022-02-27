@@ -51,3 +51,47 @@ def test_sub_pass3():
     assert v3.sub([1,2,3],[-0.1,0.5,0.9]) == [1.1,1.5,2.1]
     assert v3.sub([1,2,3],[0.1,-0.5,0.9]) == [0.9,2.5,2.1]
     assert v3.sub([1,2,3],[0.1,0.5,-0.9]) == [0.9,1.5,3.9]
+
+def test_scale_pass1():
+    assert v3.scale([0,0,0],1) == [0,0,0]
+    assert v3.scale([0,1,0],1) == [0,1,0]
+    assert v3.scale([0,0,1],1) == [0,0,1]
+    assert v3.scale([0,1,1],1) == [0,1,1]
+    assert v3.scale([1,0,0],1) == [1,0,0]
+    assert v3.scale([1,1,0],1) == [1,1,0]
+    assert v3.scale([1,0,1],1) == [1,0,1]
+    assert v3.scale([1,1,1],1) == [1,1,1]
+
+def test_scale_pass2():
+    assert v3.scale([0,0,0],2) == [0,0,0]
+    assert v3.scale([0,1,0],2) == [0,2,0]
+    assert v3.scale([0,0,1],2) == [0,0,2]
+    assert v3.scale([0,1,1],2) == [0,2,2]
+    assert v3.scale([1,0,0],2) == [2,0,0]
+    assert v3.scale([1,1,0],2) == [2,2,0]
+    assert v3.scale([1,0,1],2) == [2,0,2]
+    assert v3.scale([1,1,1],2) == [2,2,2]
+
+def test_scale_pass3():
+    assert v3.scale([0,0,0],-1) == [0,0,0]
+    assert v3.scale([0,1,0],-1) == [0,-1,0]
+    assert v3.scale([0,0,1],-1) == [0,0,-1]
+    assert v3.scale([0,1,1],-1) == [0,-1,-1]
+    assert v3.scale([1,0,0],-1) == [-1,0,0]
+    assert v3.scale([1,1,0],-1) == [-1,-1,0]
+    assert v3.scale([1,0,1],-1) == [-1,0,-1]
+    assert v3.scale([1,1,1],-1) == [-1,-1,-1]
+
+def test_scale_pass4():
+    assert v3.scale([10,5,2],2) == [20,10,4]
+    assert v3.scale([10,5,2],1) == [10,5,2]
+    assert v3.scale([10,5,2],0.5) == [5,2.5,1]
+    assert v3.scale([10,5,2],-2) == [-20,-10,-4]
+    assert v3.scale([10,5,2],-1) == [-10,-5,-2]
+    assert v3.scale([10,5,2],-0.5) == [-5,-2.5,-1]
+    assert v3.scale([-10,-5,-2],2) == [-20,-10,-4]
+    assert v3.scale([-10,-5,-2],1) == [-10,-5,-2]
+    assert v3.scale([-10,-5,-2],0.5) == [-5,-2.5,-1]
+    assert v3.scale([-10,-5,-2],-2) == [20,10,4]
+    assert v3.scale([-10,-5,-2],-1) == [10,5,2]
+    assert v3.scale([-10,-5,-2],-0.5) == [5,2.5,1]
