@@ -97,6 +97,9 @@ def test_scale_pass4():
     assert v3.scale([-10,-5,-2],-0.5) == [5,2.5,1]
 
 def test_magnitude_pass():
+    assert v3.magnitude([1,0,0]) == 1
+    assert v3.magnitude([0,1,0]) == 1
+    assert v3.magnitude([0,0,1]) == 1
     assert v3.magnitude([1,4,8]) == 9
     assert v3.magnitude([4,1,8]) == 9
     assert v3.magnitude([4,8,1]) == 9
@@ -111,6 +114,9 @@ def test_magnitude_pass():
     assert v3.magnitude([12,4,3]) == 13
 
 def test_normalize_pass():
+    assert v3.magnitude(v3.normalize([1,0,0])) <= 1
+    assert v3.magnitude(v3.normalize([0,1,0])) <= 1
+    assert v3.magnitude(v3.normalize([0,0,1])) <= 1
     assert v3.magnitude(v3.normalize([1,1,1])) <= 1
     assert v3.magnitude(v3.normalize([1,2,3])) <= 1
     assert v3.magnitude(v3.normalize([5,5,5])) <= 1
