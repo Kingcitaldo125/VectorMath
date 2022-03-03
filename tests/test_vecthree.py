@@ -121,5 +121,41 @@ def test_normalize_pass():
     assert v3.magnitude(v3.normalize([1,2,3])) <= 1
     assert v3.magnitude(v3.normalize([5,5,5])) <= 1
     assert v3.magnitude(v3.normalize([-1,-1,-1])) <= 1
+    assert v3.magnitude(v3.normalize([1,-1,-1])) <= 1
+    assert v3.magnitude(v3.normalize([-1,-1,1])) <= 1
+    assert v3.magnitude(v3.normalize([-1,1,1])) <= 1
+    assert v3.magnitude(v3.normalize([1,1,-1])) <= 1
+    assert v3.magnitude(v3.normalize([-1,1,-1])) <= 1
+    assert v3.magnitude(v3.normalize([1,-1,1])) <= 1
     assert v3.magnitude(v3.normalize([-1,-2,-3])) <= 1
     assert v3.magnitude(v3.normalize([-5,-5,-5])) <= 1
+
+def test_dot_pass_one():
+    '''
+    Unit vector permutation calculations
+    '''
+    assert v3.dot([1,0,0],[-1,0,0]) == -1
+    assert v3.dot([0,1,0],[0,-1,0]) == -1
+    assert v3.dot([0,0,1],[0,0,-1]) == -1
+    assert v3.dot([-1,1,1],[1,1,-1]) == -1
+    assert v3.dot([0,0,0],[0,0,0]) == 0
+    assert v3.dot([1,0,0],[0,0,1]) == 0
+    assert v3.dot([1,0,0],[0,0,-1]) == 0
+    assert v3.dot([1,0,0],[1,0,0]) == 1
+    assert v3.dot([0,1,0],[0,1,0]) == 1
+    assert v3.dot([1,-1,1],[1,1,1]) == 1
+    assert v3.dot([1,1,1],[1,-1,1]) == 1
+    assert v3.dot([-1,1,1],[1,1,1]) == 1
+    assert v3.dot([1,1,1],[-1,1,1]) == 1
+    assert v3.dot([1,1,1],[1,1,1]) == 3
+    assert v3.dot([-1,-1,-1],[-1,-1,-1]) == 3
+    assert v3.dot([-1,1,-1],[-1,1,-1]) == 3
+    assert v3.dot([1,-1,1],[1,-1,1]) == 3
+
+def test_dot_pass_two():
+    '''
+    Random dot product calculations
+    '''
+    assert v3.dot([1234,5,90],[45,77,63]) == 61585
+    assert v3.dot([-5,70,7],[100,-90,555]) == -2915
+    assert v3.dot([-900,-456,-2],[-2,-456,-900]) == 211536
