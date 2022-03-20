@@ -161,3 +161,25 @@ def test_dot_pass_two():
     assert v3.dot([-900,-456,-2],[-2,-456,-900]) == 211536
     assert v3.dot([-50,4,7],[-7,-4,-5]) == 299
     assert v3.dot([123,456,789],[-789,-456,-123]) == -402030
+
+def test_cross_pass_one():
+    '''
+    Unit vector permutation calculations
+    '''
+    assert v3.cross([1,0,0],[-1,0,0]) == [0,0,0]
+    assert v3.cross([0,1,0],[0,-1,0]) == [0,0,0]
+    assert v3.cross([0,0,1],[0,0,-1]) == [0,0,0]
+    assert v3.cross([-1,1,1],[1,1,-1]) == [-2,0,-2]
+    assert v3.cross([0,0,0],[0,0,0]) == [0,0,0]
+    assert v3.cross([1,0,0],[0,0,1]) == [0,-1,0]
+    assert v3.cross([1,0,0],[0,0,-1]) == [0,1,0]
+    assert v3.cross([1,0,0],[1,0,0]) == [0,0,0]
+    assert v3.cross([0,1,0],[0,1,0]) == [0,0,0]
+    assert v3.cross([1,-1,1],[1,1,1]) == [-2,0,2]
+    assert v3.cross([1,1,1],[1,-1,1]) == [2,0,-2]
+    assert v3.cross([-1,1,1],[1,1,1]) == [0,2,-2]
+    assert v3.cross([1,1,1],[-1,1,1]) == [0,-2,2]
+    assert v3.cross([1,1,1],[1,1,1]) == [0,0,0]
+    assert v3.cross([-1,-1,-1],[-1,-1,-1]) == [0,0,0]
+    assert v3.cross([-1,1,-1],[-1,1,-1]) == [0,0,0]
+    assert v3.cross([1,-1,1],[1,-1,1]) == [0,0,0]

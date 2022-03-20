@@ -1,6 +1,6 @@
 import os
-import vecthree as v3
 
+from vecthree import vecthree as v3
 
 menu_options = [
 "1. Add",
