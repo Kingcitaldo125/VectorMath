@@ -193,3 +193,30 @@ def test_cross_pass_two():
     assert v3.cross([-900,-456,-2],[-2,-456,-900]) == [409488,-809996,409488]
     assert v3.cross([-50,4,7],[-7,-4,-5]) == [8,-299,228]
     assert v3.cross([123,456,789],[-789,-456,-123]) == [303696,-607392,303696]
+
+def test_get_angle_pass():
+    '''
+    '''
+    # Fail Cond:
+    #assert v3.get_angle([0,0,0],[0,0,0]) == None
+    assert v3.get_angle([1,0,0],[1,0,0]) == 0.0
+    assert v3.get_angle([0,1,0],[0,1,0]) == 0.0
+    assert v3.get_angle([0,0,1],[0,0,1]) == 0.0
+    assert v3.get_angle([1,0,0],[0,1,0]) == 90.0
+    assert v3.get_angle([0,1,0],[0,0,1]) == 90.0
+    assert v3.get_angle([1,0,0],[-1,0,0]) == 180.0
+    assert v3.get_angle([0,1,0],[0,-1,0]) == 180.0
+    assert v3.get_angle([0,0,1],[0,0,-1]) == 180.0
+    assert v3.get_angle([-1,1,1],[1,1,-1]) == 109.471
+    assert v3.get_angle([1,0,0],[0,0,1]) == 90.0
+    assert v3.get_angle([1,0,0],[0,0,-1]) == 90.0
+    assert v3.get_angle([1,0,0],[1,0,0]) == 0.0
+    assert v3.get_angle([0,1,0],[0,1,0]) == 0.0
+    assert v3.get_angle([1,-1,1],[1,1,1]) == 70.529
+    assert v3.get_angle([1,1,1],[1,-1,1]) == 70.529
+    assert v3.get_angle([-1,1,1],[1,1,1]) == 70.529
+    assert v3.get_angle([1,1,1],[-1,1,1]) == 70.529
+    assert v3.get_angle([1,1,1],[1,1,1]) == 0.0
+    assert v3.get_angle([-1,-1,-1],[-1,-1,-1]) == 0.0
+    assert v3.get_angle([-1,1,-1],[-1,1,-1]) == 0.0
+    assert v3.get_angle([1,-1,1],[1,-1,1]) == 0.0

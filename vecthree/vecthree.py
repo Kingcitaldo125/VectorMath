@@ -1,5 +1,7 @@
 import math
 
+from traceback import print_exception
+
 def add(vec3one, vec3two):
 	'''Return the sum of vec3one and vec3two'''
 	if len(vec3one) != len(vec3two):
@@ -28,11 +30,12 @@ def magnitude(vec3):
 	for v in vec3:
 		tot += v**2
 	
-	return round(math.sqrt(tot),4)
+	return round(math.sqrt(tot),5)
+	#return math.sqrt(tot)
 
 def normalize(vec3):
 	'''Normalize, and return, a vector'''
-	return [round(i/magnitude(vec3),4) for i in vec3]
+	return [round(i/magnitude(vec3),5) for i in vec3]
 
 def dot(vec3one, vec3two):
 	'''Return the dot product of two vectors'''
@@ -43,7 +46,8 @@ def dot(vec3one, vec3two):
 		prod = vec3one[v] * vec3two[v]
 		h += prod
 
-	return round(h,4)
+	#return round(h,4)
+	return h
 
 def cross(vec3one, vec3two):
 	'''Return the cross product of two vector 3s'''
@@ -51,7 +55,7 @@ def cross(vec3one, vec3two):
 		return -1
 	a = vec3one
 	b = vec3two
-	
+
 	ax = a[0]
 	ay = a[1]
 	az = a[2]
@@ -65,16 +69,27 @@ def cross(vec3one, vec3two):
 def get_angle(vec3one, vec3two):
 	'''Return the angle(degrees) between two vectors'''
 	dotV = dot(vec3one, vec3two)
+
 	magone = magnitude(vec3one)
 	magtwo = magnitude(vec3two)
-	ang = dotV/(magone * magtwo)
-	ang = round(ang, 4)
-	theta = math.acos(ang)
-	
-	NDot = round(magone * magtwo * math.cos(theta))
-	assert(round(NDot) == round(dotV))
 
-	return round(math.degrees(theta), 4)
+	mag_prod = magone * magtwo
+	theta = None
+
+	try:
+		ang = dotV / mag_prod
+		print("ang",ang)
+		ang = round(ang,5)
+		print("ang",ang)
+		theta = math.acos(ang)
+		print("theta",theta)
+	except ZeroDivisionError as e:
+		print_exception(e)
+		return None
+
+	theta = math.degrees(theta)
+	print("theta",theta)
+	return round(theta, 3)
 
 if __name__ == "__main__":
 	'''Entrypoint'''
